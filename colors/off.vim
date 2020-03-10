@@ -24,6 +24,7 @@ let s:actual_white    = { "gui": "#FFFFFF", "cterm": "231" }
 let s:light_black     = { "gui": "#424242", "cterm": "8"   }
 let s:lighter_black   = { "gui": "#545454", "cterm": "240" }
 let s:subtle_black    = { "gui": "#303030", "cterm": "236" }
+let s:splitter_white  = { "gui": "#ffffd7", "cterm": "231" }
 let s:light_gray      = { "gui": "#B2B2B2", "cterm": "249" }
 let s:lighter_gray    = { "gui": "#C6C6C6", "cterm": "251" }
 let s:pink            = { "gui": "#fb007a", "cterm": "9"   }
@@ -40,13 +41,14 @@ let s:dark_green      = { "gui": "#10A778", "cterm": "2"   }
 let s:light_green     = { "gui": "#5FD7A7", "cterm": "10"  }
 let s:dark_purple     = { "gui": "#523C79", "cterm": "5"   }
 let s:light_purple    = { "gui": "#6855DE", "cterm": "13"  }
-let s:yellow          = { "gui": "#F3E430", "cterm": "11"  }
+let s:yellow          = { "gui": "#D9E079", "cterm": "11"  }
 let s:dark_yellow     = { "gui": "#A89C14", "cterm": "3"   }
-
+" hi
 if &background == "dark"
   let s:bg              = s:black
   let s:bg_subtle       = s:light_black
   let s:bg_very_subtle  = s:subtle_black
+  let s:bg_splitter		= s:splitter_white
   let s:norm            = s:lighter_gray
   let s:norm_subtle     = s:light_gray
   let s:purple          = s:light_purple
@@ -81,7 +83,7 @@ endfunction
 
 call s:h("Normal",        {"bg": s:bg, "fg": s:norm})
 call s:h("Cursor",        {"bg": s:blue, "fg": s:norm })
-call s:h("Comment",       {"fg": s:bg_subtle, "gui": "italic"})
+call s:h("Comment",       {"fg": s:light_black, "gui": "italic"})
 
 "call s:h("Constant",      {"fg": s:cyan})
 hi! link Constant         Normal
@@ -128,7 +130,7 @@ hi! link Debug            Special
 call s:h("Underlined",    {"fg": s:norm, "gui": "underline", "cterm": "underline"})
 call s:h("Ignore",        {"fg": s:bg})
 call s:h("Error",         {"fg": s:actual_white, "bg": s:red, "cterm": "bold"})
-call s:h("Todo",          {"fg": s:actual_white, "bg": s:yellow, "gui": "bold", "cterm": "bold"})
+call s:h("Todo",          {"fg": s:actual_white, "bg": s:dark_yellow, "gui": "bold", "cterm": "bold"})
 call s:h("SpecialKey",    {"fg": s:light_green})
 call s:h("NonText",       {"fg": s:medium_gray})
 call s:h("Directory",     {"fg": s:dark_blue})
@@ -140,9 +142,9 @@ hi! link ModeMsg MoreMsg
 call s:h("LineNr",        {"fg": s:bg_subtle})
 call s:h("CursorLineNr",  {"fg": s:blue, "bg": s:bg_very_subtle})
 call s:h("Question",      {"fg": s:red})
-call s:h("StatusLine",    {"bg": s:bg_very_subtle})
-call s:h("StatusLineNC",  {"bg": s:bg_very_subtle, "fg": s:medium_gray})
-call s:h("VertSplit",     {"bg": s:bg_very_subtle, "fg": s:bg_very_subtle})
+call s:h("StatusLine",    {"bg": s:bg_splitter, "fg": s:medium_gray})
+call s:h("StatusLineNC",  {"bg": s:bg_splitter, "fg": s:medium_gray})
+call s:h("VertSplit",     {"bg": s:bg_splitter, "fg": s:bg_splitter})
 call s:h("Title",         {"fg": s:dark_blue})
 call s:h("Visual",        {"bg": s:visual})
 call s:h("VisualNOS",     {"bg": s:bg_subtle})
@@ -200,3 +202,4 @@ hi link GitGutterAdd                LineNr
 hi link GitGutterDelete             LineNr
 hi link GitGutterChange             LineNr
 hi link GitGutterChangeDelete       LineNr
+
